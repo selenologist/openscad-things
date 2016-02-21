@@ -1,6 +1,9 @@
+// D-shafted parametric robot wheel.
+
+
 // smoothify; remove for speed
 $fa=1;
-$fs=1;
+$fs=0.1;
 
 module make_spokes(length,
                    base_diameter,
@@ -37,9 +40,10 @@ module wheel(wheel_diameter,
                             d2=wheel_diameter -
                                wheel_thickness);
         }
-        cylinder(width,
-                 hub_diameter,
-                 hub_diameter);
+        translate([0,0,width/6])
+            cylinder(2*width/3,
+                     hub_diameter,
+                     hub_diameter);
         translate([0,0,width/2])
         make_spokes(length=wheel_diameter/2 -
                            wheel_thickness/2,
@@ -52,20 +56,19 @@ module wheel(wheel_diameter,
         cylinder(width,
                  d1=shaft_diameter,
                  d2=shaft_diameter);
-        translate([2*shaft_diameter/3, 0, 0])
+        translate([5*shaft_diameter/6, 0, width/2])
             cube([shaft_diameter,
                   
                   shaft_diameter,
-                  width*2],
-                 center=true); // I have no idea why
-                               // this needs to be *2
+                  width],
+                 center=true);
     }
     }
 }
 
-wheel(wheel_diameter  = 30,
+wheel(wheel_diameter  = 50,
       wheel_thickness = 6,
-      hub_diameter    = 6,
-      shaft_diameter  = 3,
+      hub_diameter    = 7,
+      shaft_diameter  = 3.5,
       spokes          = 3,
-      width           = 10);
+      width           = 6);
