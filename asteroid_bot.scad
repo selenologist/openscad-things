@@ -1,4 +1,10 @@
-// "Asteroid" robot frame
+/* "Asteroid" robot frame
+ * currently seems good but I broke the motor clips off trying to remove
+ * support material :(.
+ * 
+ * Gonna glue on replacements until I need to make further edits to this
+ * design.
+*/
 
 $fs = 0.1;
 $fa = 0.1;
